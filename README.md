@@ -42,8 +42,6 @@ Recursos da API:
 * Capítulo 2: [Recursos](doc/c2.md)
 ### Produto
 * Capítulo 3: [Produto](doc/c3.md)
-### Apresentação
-* Capítulo 4: [Apresentação](doc/c4.md)
 
 ## Equipa
 * Rafael Ribeiro Morim Cabreira [@RafaelCabreira](https://github.com/RafaelCabreira)
