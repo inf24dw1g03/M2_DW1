@@ -1,0 +1,21 @@
+{
+  "name": "basketball-tournaments",
+  "version": "0.0.1",
+  "description": "An REST API to manage Basketball tournaments",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "mysql2": "^3.11.5",
+    "oas3-tools": "^2.2.3"
+  }
+}

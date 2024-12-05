@@ -1,0 +1,33 @@
+services:
+  api:
+    image: antonioferreira05/tournament_api
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - "127.0.0.1:3000:3000"  
+    working_dir: /app  
+    volumes:
+      - ./:/app 
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_USER: root
+      DATABASE_PASSWORD: 12345678
+      DATABASE_NAME: Tournament
+    depends_on:
+      db:
+        condition: service_healthy  
+
+  db:
+    container_name: Tournament_db
+    image: antonioferreira05/m2mysql
+    volumes:
+      - Tournament-mysql-data:/var/lib/mysql  
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: Tournament
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]  
+      timeout: 20s
+      retries: 10
+
+volumes:
+  Tournament-mysql-data:

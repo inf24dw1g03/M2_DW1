@@ -1,0 +1,789 @@
+openapi: 3.0.0
+info:
+  title: Basketball Tournaments
+  description: An REST API to manage Basketball tournaments
+  version: 0.0.1
+servers:
+- url: http://localhost:3000
+  description: My localhost
+  variables:
+    basePath:
+      default: /
+paths:
+  /players:
+    get:
+      tags:
+      - PlayerController
+      summary: Retrieve players
+      operationId: retrievePlayers
+      responses:
+        "200":
+          description: Array of Players model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: array
+                xml:
+                  name: Players
+                items:
+                  $ref: '#/components/schemas/Player'
+      x-swagger-router-controller: PlayerController
+    post:
+      tags:
+      - PlayerController
+      summary: Create player
+      operationId: createPlayer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Player'
+      responses:
+        "200":
+          description: Create player model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Player'
+      x-swagger-router-controller: PlayerController
+  /players/{id}:
+    get:
+      tags:
+      - PlayerController
+      summary: Retrieve player
+      operationId: retrievePlayer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Player id 1
+            value: 1
+          two:
+            summary: Retrieve Player id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: PlayerController
+    put:
+      tags:
+      - PlayerController
+      summary: Update player
+      operationId: updatePlayer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Player id 1
+            value: 1
+          two:
+            summary: Update Player id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+            examples:
+              Example01:
+                $ref: '#/components/examples/PlayerExample01'
+              Example02:
+                $ref: '#/components/examples/PlayerExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Player PUT sucess
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: PlayerController
+    delete:
+      tags:
+      - PlayerController
+      summary: Delete player
+      operationId: deletePlayer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Player id 1
+            value: 1
+          two:
+            summary: Delete Player id 2
+            value: 2
+      responses:
+        "204":
+          description: No content
+        "404":
+          description: id not found
+      x-swagger-router-controller: PlayerController
+  /teams:
+    get:
+      tags:
+      - TeamController
+      summary: Retrieve teams
+      operationId: retrieveTeams
+      responses:
+        "200":
+          description: Array of Teams model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: array
+                xml:
+                  name: Teams
+                items:
+                  $ref: '#/components/schemas/Team'
+      x-swagger-router-controller: TeamController
+    post:
+      tags:
+      - TeamController
+      summary: Create team
+      operationId: createTeam
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Team'
+      responses:
+        "200":
+          description: Create teams model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Team'
+      x-swagger-router-controller: TeamController
+  /teams/{id}:
+    get:
+      tags:
+      - TeamController
+      summary: Retrieve team
+      operationId: retrieveTeam
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Team id 1
+            value: 1
+          two:
+            summary: Retrieve Team id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: TeamController
+    put:
+      tags:
+      - TeamController
+      summary: Update team
+      operationId: updateTeam
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Team id 1
+            value: 1
+          two:
+            summary: Update Team id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+            examples:
+              Example01:
+                $ref: '#/components/examples/TeamExample01'
+              Example02:
+                $ref: '#/components/examples/TeamExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Team PUT sucess
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: TeamController
+    delete:
+      tags:
+      - TeamController
+      summary: Delete team
+      operationId: deleteTeam
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Team id 1
+            value: 1
+          two:
+            summary: Delete Team id 2
+            value: 2
+      responses:
+        "204":
+          description: No content
+        "404":
+          description: id not found
+      x-swagger-router-controller: TeamController
+  /matches:
+    get:
+      tags:
+      - MatchController
+      summary: Retrieve matches
+      operationId: retrieveMatches
+      responses:
+        "200":
+          description: Array of Matches model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: array
+                xml:
+                  name: Matches
+                items:
+                  $ref: '#/components/schemas/Match'
+      x-swagger-router-controller: MatchController
+    post:
+      tags:
+      - MatchController
+      summary: Create match
+      operationId: createMatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Match'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Match'
+      responses:
+        "200":
+          description: Create match model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Match'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Match'
+      x-swagger-router-controller: MatchController
+  /Matches/{id}:
+    get:
+      tags:
+      - MatchController
+      summary: Retrieve match
+      operationId: retrieveMatch
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Match id 1
+            value: 1
+          two:
+            summary: Retrieve Match id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Match'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: MatchController
+    put:
+      tags:
+      - MatchController
+      summary: Update match
+      operationId: updateMatch
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Match id 1
+            value: 1
+          two:
+            summary: Update Match id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Match'
+            examples:
+              Example01:
+                $ref: '#/components/examples/MatchExample01'
+              Example02:
+                $ref: '#/components/examples/MatchExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Match PUT sucess
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: MatchController
+    delete:
+      tags:
+      - MatchController
+      summary: Delete match
+      operationId: deleteMatch
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Match id 1
+            value: 1
+          two:
+            summary: Delete Match id 2
+            value: 2
+      responses:
+        "204":
+          description: No content
+        "404":
+          description: id not found
+      x-swagger-router-controller: MatchController
+  /tournaments:
+    get:
+      tags:
+      - TournamentController
+      summary: Retrieve tournaments
+      operationId: retrieveTournaments
+      responses:
+        "200":
+          description: Array of Tournaments model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tournament'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: array
+                xml:
+                  name: Tournaments
+                items:
+                  $ref: '#/components/schemas/Tournament'
+      x-swagger-router-controller: TournamentController
+    post:
+      tags:
+      - TournamentController
+      summary: Create tournament
+      operationId: createTournament
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tournament'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Tournament'
+      responses:
+        "200":
+          description: Create tournament model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+      x-swagger-router-controller: TournamentController
+  /tournaments/{id}:
+    get:
+      tags:
+      - TournamentController
+      summary: Retrieve tournament
+      operationId: retrieveTournament
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Tournament id 1
+            value: 1
+          two:
+            summary: Retrieve Tournament id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: TournamentController
+    put:
+      tags:
+      - TournamentController
+      summary: Update tournament
+      operationId: updateTournament
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Tournament id 1
+            value: 1
+          two:
+            summary: Update Tournament id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tournament'
+            examples:
+              Example01:
+                $ref: '#/components/examples/TournamentExample01'
+              Example02:
+                $ref: '#/components/examples/TournamentExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Tournament PUT sucess
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: TournamentController
+    delete:
+      tags:
+      - TournamentController
+      summary: Delete tournament
+      operationId: deleteTournament
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Tournament id 1
+            value: 1
+          two:
+            summary: Delete Tournament id 2
+            value: 2
+      responses:
+        "204":
+          description: No content
+        "404":
+          description: id not found
+      x-swagger-router-controller: TournamentController
+components:
+  schemas:
+    Player:
+      title: Player
+      required:
+      - id
+      - name
+      - team_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        age:
+          type: integer
+          format: int64
+        team_id:
+          type: integer
+          format: int64
+      additionalProperties: false
+      example:
+        name: name
+        id: 0
+        team_id: 1
+        age: 6
+    Team:
+      title: Team
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        fundation_year:
+          type: integer
+          format: int64
+      example:
+        fundation_year: 6
+        name: name
+        id: 0
+    Match:
+      title: Match
+      required:
+      - date
+      - id
+      - team_1_id
+      - team_2_id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        team_1_id:
+          type: integer
+          format: int64
+        team_2_id:
+          type: integer
+          format: int64
+        date:
+          type: string
+        hour:
+          type: string
+        location:
+          type: string
+      example:
+        date: date
+        team_2_id: 1
+        team_1_id: 6
+        hour: hour
+        location: location
+        id: 0
+    Tournament:
+      title: Tournament
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        begin_date:
+          type: string
+        end_date:
+          type: string
+      example:
+        end_date: end_date
+        begin_date: begin_date
+        name: name
+        id: 0
+  examples:
+    PlayerExample01:
+      value:
+        id: 1
+        name: Rafael Cabreira
+        age: 19
+        team_id: 1
+    PlayerExample02:
+      value:
+        id: 2
+        name: António Ferreira
+        age: 19
+        team_id: 2
+    TeamExample01:
+      value:
+        id: 1
+        name: Chicago Bulls
+        fundation_year: 1966
+    TeamExample02:
+      value:
+        id: 2
+        name: Los Angeles Lakers
+        fundation_year: 1960
+    MatchExample01:
+      value:
+        id: 1
+        team_1_id: 1
+        team_2_id: 2
+        date: 01/12/2024
+        hour: 18H30
+        location: Lisboa
+    MatchExample02:
+      value:
+        id: 2
+        team_1_id: 3
+        team_2_id: 4
+        date: 02/01/2025
+        hour: 15H30
+        location: Madrid
+    TournamentExample01:
+      value:
+        id: 1
+        name: World Cup
+        begin_date: 25/11/2024
+        end_date: 20/02/2025
+    TournamentExample02:
+      value:
+        id: 3
+        name: EuroBasket
+        begin_date: 09/3/2025
+        end_date: 05/06/2025
