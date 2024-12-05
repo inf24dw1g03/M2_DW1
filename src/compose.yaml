@@ -1,6 +1,6 @@
 services:
   api:
-    image: antonioferreira05/tournament_api
+    image: inf24dw1g03/tournament_api
     command: sh -c "yarn install && yarn run dev"
     ports:
       - "127.0.0.1:3000:3000"  
@@ -18,7 +18,7 @@ services:
 
   db:
     container_name: Tournament_db
-    image: antonioferreira05/m2mysql
+    image: inf24dw1g03/m2mysql
     volumes:
       - Tournament-mysql-data:/var/lib/mysql  
     environment:
