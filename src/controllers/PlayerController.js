@@ -37,6 +37,7 @@ module.exports.retrievePlayer = function retrievePlayer (req, res, next, id) {
 module.exports.retrievePlayers = function retrievePlayers (req, res, next) {
   PlayerController.retrievePlayers()
     .then(function (response) {
+      console.log(response);
       utils.writeJson(res, response);
     })
     .catch(function (response) {
