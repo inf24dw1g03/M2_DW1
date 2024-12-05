@@ -25,9 +25,9 @@ Recursos da API:
 
 
 * [Javascript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
-* [nodeJS](https://nodejs.org/en/)
+* [nodeJS] (https://nodejs.org/en/)
 * [MySQL] (https://www.mysql.com)
-* [OpenAPI](https://swagger.io/specification/)
+* [OpenAPI] (https://swagger.io/specification/)
 
 ### Frameworks e Bibliotecas
 
