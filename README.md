@@ -18,8 +18,6 @@ Recursos da API:
 * Capítulos do relatório na [pasta doc](doc/).
 * Documento inicial [OpenApi](src/api/openapi.yaml)
 
-## Galeria
-
 
 ## Tecnologias
 
